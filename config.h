@@ -79,8 +79,8 @@ static unsigned int cursorthickness = 2;
  *    Bold affects lines thickness if boxdraw_bold is not 0. Italic is ignored.
  * 0: disable (render all U25XX glyphs normally from the font).
  */
-const int boxdraw = 0;
-const int boxdraw_bold = 0;
+const int boxdraw = 1;
+const int boxdraw_bold = 1;
 
 /* braille (U28XX):  1: render as adjacent "pixels",  0: use font */
 const int boxdraw_braille = 0;
@@ -117,34 +117,56 @@ float alpha = 0.8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	"#000000",
+	"#ff0000",
+	"#00ff00",
+	"#ffff00",
+	"#0088ff",
+	"#ff00ff",
+	"#00aaaa",
+	"#ffffff",
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	"#333333",
+	"#ff6600",
+	"#00cc00",
+	"#ffbb00",
+	"#0000ff",
+	"#c600c6",
+	"#0066aa",
+	"#f1f1f1",
 
+	/* 18 transparent colors */
+	"#000000",
+	"#440000",
+	"#004400",
+	"#444400",
+	"#000044",
+	"#440044",
+	"#004444",
+	"#444444",
+
+	"#881000",
+	"#882000",
+	"#883000",
+	"#884000",
+	"#885000",
+	"#886000",
+	"#887000",
+	"#887800",
+	"#888000",
+	"#888800",
+ 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
+ 	"#000000",
+	"#ffff00",
+	"#0000ff",
 	"#555555",
-	"gray90", /* default foreground colour */
-	"black", /* default background colour */
 };
 
+const int trans_colors = 18;
 
 /*
  * Default colors (colorname index)
