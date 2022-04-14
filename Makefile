@@ -41,9 +41,15 @@ install: st
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
 	tic -sx st.info
 	@echo Please see the README file regarding the terminfo entry of st.
+	cp -f st_copyout.sh $(DESTDIR)$(PREFIX)/bin
+	chmod 755 $(DESTDIR)$(PREFIX)/bin/st_copyout.sh
+	cp -f st_urlhandler.sh $(DESTDIR)$(PREFIX)/bin
+	chmod 755 $(DESTDIR)$(PREFIX)/bin/st_urlhandler.sh
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/st
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
+	rm -f $(DESTDIR)$(PREFIX)/bin/st_copyout.sh
+	rm -f $(DESTDIR)$(PREFIX)/bin/st_urlhandler.sh
 
 .PHONY: all clean dist install uninstall
