@@ -834,8 +834,6 @@ xloadcols(void)
 		}
 
 	/* set alpha value of bg color */
-	if (opt_alpha)
-		alpha = strtof(opt_alpha, NULL);
 	dc.col[defaultbg].color.alpha = (unsigned short)(0xffff * alpha);
 	dc.col[defaultbg].pixel &= 0x00FFFFFF;
 	dc.col[defaultbg].pixel |= (unsigned char)(0xff * alpha) << 24;
@@ -2186,6 +2184,7 @@ main(int argc, char *argv[])
 		break;
 	case 'A':
 		opt_alpha = EARGF(usage());
+		alpha = strtof(opt_alpha, NULL);
 		break;
 	case 'c':
 		opt_class = EARGF(usage());
