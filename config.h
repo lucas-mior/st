@@ -266,6 +266,7 @@ static Shortcut shortcuts[] = {
 	{ ControlMask|ShiftMask,XK_D,           kscrolldown,    {.i = -1} },
 	{ ControlMask|ShiftMask,XK_Y,           externalpipe,   {.v = openurlcmd } },
 	{ ControlMask|ShiftMask,XK_O,           externalpipe,   {.v = copyoutput } },
+	{ Mod1Mask,             XK_Escape,      vimselect,      {0} },
 };
 
 /*
