@@ -184,6 +184,9 @@ static unsigned int mousebg = 0;
  */
 static unsigned int defaultattr = 11;
 
+static char *openurlcmd[] = { "/bin/sh", "-c", "st_urlhandler.sh -o", "externalpipe", NULL };
+static char *copyoutput[] = { "/bin/sh", "-c", "st_copyout.sh", "externalpipe", NULL };
+
 /*
  * Force mouse select/shortcuts while mask is active (when MODE_MOUSE is set).
  * Note that if you want to use ShiftMask with selmasks, set this to an other
@@ -227,6 +230,8 @@ static Shortcut shortcuts[] = {
 	{ Mod1Mask,             XK_k,           kscrolldown,    {.i = +1} },
 	{ ControlMask,          XK_F11,         changealpha,    {.f = -0.05} },
 	{ ControlMask,          XK_F12,         changealpha,    {.f = +0.05} },
+	{ Mod1Mask,             XK_y,           externalpipe,   {.v = openurlcmd } },
+	{ Mod1Mask,             XK_o,           externalpipe,   {.v = copyoutput } },
 };
 
 /*
