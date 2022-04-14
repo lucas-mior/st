@@ -231,6 +231,8 @@ static Shortcut shortcuts[] = {
 	{ Mod1Mask,             XK_d,           kscrolldown,    {.i = -1} },
 	{ Mod1Mask,             XK_l,           kscrollup,      {.i = +1} },
 	{ Mod1Mask,             XK_k,           kscrolldown,    {.i = +1} },
+	{ ControlMask,          XK_F11,         changealpha,    {.f = -0.05} },
+	{ ControlMask,          XK_F12,         changealpha,    {.f = +0.05} },
 };
 
 /*
