@@ -5,11 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=18:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"Noto Color Emoji:pixelsize=16:antialias=true:autohint=true",
-	"Hack Nerd Font Mono:pixelsize=16:antialias=true:autohint=true",
+	"Noto Color Emoji:pixelsize=18:antialias=true:autohint=true",
+	"Hack Nerd Font Mono:pixelsize=18:antialias=true:autohint=true",
 };
 
 static int borderpx = 2;
@@ -260,6 +260,7 @@ static Shortcut shortcuts[] = {
 	{ Mod1Mask,             XK_k,           kscrolldown,    {.i = +1} },
 	{ Mod1Mask,             XK_y,           externalpipe,   {.v = openurlcmd } },
 	{ Mod1Mask,             XK_o,           externalpipe,   {.v = copyoutput } },
+	{ Mod1Mask,             XK_Escape,      vimselect,      {0} },
 };
 
 /*

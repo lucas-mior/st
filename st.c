@@ -2133,6 +2133,68 @@ externalpipe(const Arg *arg)
 }
 
 void
+vimselect(const Arg *arg)
+{
+	char buf[UTF_SIZ];
+	int buflen = 0;
+	Glyph *bp, *end;
+	int lastpos, n, newline;
+
+	char tmp_file[50];
+	int TMP_FILE;
+	pid_t child;
+
+	pid_t pid = getpid();
+	snprintf(tmp_file, sizeof(tmp_file), "/tmp/st_vimselect_%d", pid);
+
+	switch (child = fork()) {
+	case -1:
+		die("fork failed: %s\n", strerror(errno));
+		return;
+	case 0:
+		if ((TMP_FILE = open(tmp_file, O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR, O_TRUNC)) == -1) {
+			printf("erro = %s\n", strerror(errno));
+			exit(0);
+		}
+
+		newline = 0;
+		for (n = 0; n <= HISTSIZE + 2; n++) {
+			bp = TLINE_HIST(n);
+			lastpos = MIN(tlinehistlen(n) + 1, term.col) - 1;
+			if (lastpos < 0)
+				break;
+			end = &bp[lastpos + 1];
+			for (; bp < end; ++bp) {
+				buflen = utf8encode(bp->u, buf);
+				if (buflen == 1) {
+					if (buf[0] > 011) {
+						if (xwrite(TMP_FILE, buf, buflen) < 0)
+							break;
+					}
+				} else {
+					if (xwrite(TMP_FILE, buf, buflen) < 0)
+						break;
+				}
+			}
+			if ((newline = TLINE_HIST(n)[lastpos].mode & ATTR_WRAP))
+				continue;
+			if (xwrite(TMP_FILE, "\n", 1) < 0)
+				break;
+			newline = 0;
+		}
+		if (newline)
+			(void)xwrite(TMP_FILE, "\n", 1);
+		close(TMP_FILE);
+		int y = HISTSIZE - term.row + term.c.y + 4;
+		openvim(tmp_file, (term.col + 2), (term.row + 1), term.c.x, y);
+	}
+	sleep(MAX(HISTSIZE / 5000, 1));
+	unlink(tmp_file);
+
+	return;
+}
+
+void
 strdump(void)
 {
 	size_t i;

@@ -91,6 +91,9 @@ void printsel(const Arg *);
 void sendbreak(const Arg *);
 void toggleprinter(const Arg *);
 
+void vimselect(const Arg *);
+void openvim(char *, int, int, int, int);
+
 int tattrset(int);
 void tnew(int, int);
 void tresize(int, int);
