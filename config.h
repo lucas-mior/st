@@ -254,6 +254,7 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_F12,         changealpha,    {.f = +0.05} },
 	{ Mod1Mask,             XK_y,           externalpipe,   {.v = openurlcmd } },
 	{ Mod1Mask,             XK_o,           externalpipe,   {.v = copyoutput } },
+	{ Mod1Mask,             XK_Escape,      vimselect,      {0} },
 };
 
 /*
