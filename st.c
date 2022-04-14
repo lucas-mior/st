@@ -63,6 +63,8 @@
 	} \
 } while (0);
 
+#define TLINE_HIST(y)           ((y) <= HISTSIZE-term.row+2 ? term.hist[(y)] : term.line[(y-HISTSIZE+term.row-3)])
+
 enum term_mode {
 	MODE_WRAP        = 1 << 0,
 	MODE_INSERT      = 1 << 1,
@@ -489,6 +491,20 @@ tgetline(char *buf, const Glyph *fgp)
 	if (!(lgp->mode & ATTR_WRAP))
 		*(ptr++) = '\n';
 	return ptr - buf;
+}
+
+int
+tlinehistlen(int y)
+{
+	int i = term.col;
+
+	if (TLINE_HIST(y)[i - 1].mode & ATTR_WRAP)
+		return i;
+
+	while (i > 0 && TLINE_HIST(y)[i - 1].u == ' ')
+		--i;
+
+	return i;
 }
 
 void
@@ -2267,16 +2283,18 @@ externalpipe(const Arg *arg)
 	/* ignore sigpipe for now, in case child exists early */
 	oldsigpipe = signal(SIGPIPE, SIG_IGN);
 	newline = 0;
-	for (n = 0; n < term.row; n++) {
-		bp = term.line[n];
-		lastpos = MIN(tlinelen(n) + 1, term.col) - 1;
+	for (n = 0; n <= HISTSIZE + 2; n++) {
+		bp = TLINE_HIST(n);
+		lastpos = MIN(tlinehistlen(n) + 1, term.col) - 1;
 		if (lastpos < 0)
 			break;
+        if (lastpos == 0)
+            continue;
 		end = &bp[lastpos + 1];
 		for (; bp < end; ++bp)
 			if (xwrite(to[1], buf, utf8encode(bp->u, buf)) < 0)
 				break;
-		if ((newline = term.line[n][lastpos].mode & ATTR_WRAP))
+		if ((newline = TLINE_HIST(n)[lastpos].mode & ATTR_WRAP))
 			continue;
 		if (xwrite(to[1], "\n", 1) < 0)
 			break;
