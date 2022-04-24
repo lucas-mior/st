@@ -255,6 +255,7 @@ static Shortcut shortcuts[] = {
 	{ Mod1Mask,             XK_y,           externalpipe,   {.v = openurlcmd } },
 	{ Mod1Mask,             XK_o,           externalpipe,   {.v = copyoutput } },
 	{ Mod1Mask,             XK_Escape,      vimselect,      {0} },
+	{ ControlMask,          XK_semicolon,   ttysend,        {.s = "\033[20~"} }, // send <F9> to vim
 };
 
 /*
