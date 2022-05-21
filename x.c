@@ -1391,6 +1391,8 @@ xinit(int cols, int rows)
 	XMapWindow(xw.dpy, xw.win);
 	XSync(xw.dpy, False);
 
+	XWarpPointer(xw.dpy, None, xw.win, 0, 0, 0, 0, 10, 10);
+
 	clock_gettime(CLOCK_MONOTONIC, &xsel.tclick1);
 	clock_gettime(CLOCK_MONOTONIC, &xsel.tclick2);
 	xsel.primary = NULL;
