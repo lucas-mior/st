@@ -136,15 +136,24 @@ static const char *colorname[] = {
 	"#0066aa",
 	"#f1f1f1",
 
-	/* 18 transparent colors */
+	/* 26 transparent colors */
 	"#000000",
-	"#400000",
-	"#004000",
-	"#404000",
-	"#000040",
-	"#400040",
-	"#004040",
-	"#404040",
+	"#3a0000",
+	"#003a00",
+	"#3a3a00",
+	"#00003a",
+	"#3a003a",
+	"#003a3a",
+	"#3a3a3a",
+
+	"#000000",
+	"#2a0000",
+	"#002a00",
+	"#2a2a00",
+	"#00002a",
+	"#2a002a",
+	"#002a2a",
+	"#2a2a2a",
 
 	"#881000",
 	"#882000",
@@ -166,7 +175,7 @@ static const char *colorname[] = {
 	"#555555",
 };
 
-const int trans_colors = 18;
+const int trans_colors = 26;
 
 /*
  * Default colors (colorname index)
