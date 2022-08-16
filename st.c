@@ -2179,6 +2179,10 @@ vimselect(const Arg *arg)
 		if (newline)
 			(void)xwrite(TMP_FILE, "\n", 1);
 		close(TMP_FILE);
+		term.c.x = MIN(term.c.x, term.col);
+		term.c.x = MAX(term.c.x, 0);
+		term.c.y = MIN(term.c.y, term.row);
+		term.c.y = MAX(term.c.y, 0);
 		openvim(tmp_file, lines, (term.col + 2), (term.row + 1), term.c.x, term.c.y);
 	}
 	sleep(MAX(HISTSIZE / 5000, 1));
