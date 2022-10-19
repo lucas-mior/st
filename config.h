@@ -165,7 +165,7 @@ static const char *colorname[] = {
 	"#887800",
 	"#888000",
 	"#888800",
- 
+
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
@@ -185,7 +185,7 @@ unsigned int defaultfg = 7;
 unsigned int defaultbg = 256;
 unsigned int defaultcs = 257;
 unsigned int defaultrcs = 258;
-unsigned int selectionbg = 240;
+unsigned int selectionbg = 238;
 unsigned int selectionfg = 7;
 
 /* If 0 use selectionfg as foreground in order to have a uniform foreground-color */
