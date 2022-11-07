@@ -40,3 +40,5 @@ Based on Aurélien APTEL <aurelien dot aptel at gmail dot com> bt source code.
 - Shortcuts
 - Transparent colors
 - Vimselect: Press `alt-esc` to enter vim mode
+
+![ncmpcpp visualizer with transparent colors](https://github.com/lucas-mior/st/blob/master/print.png?raw=true)
