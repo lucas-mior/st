@@ -26,8 +26,8 @@ See the man page for additional details.
 ## Credits
 Based on Aurélien APTEL <aurelien dot aptel at gmail dot com> bt source code.
 
-## Changes over vanilla ST
-### Patches from suckless.org:
+# Changes over vanilla ST
+## Patches from suckless.org:
 - Boxdraw
 - Scrollback
 - alpha
@@ -36,7 +36,7 @@ Based on Aurélien APTEL <aurelien dot aptel at gmail dot com> bt source code.
 - delkey
 - anysize
 
-### Other changes
+## Other changes
 - Shortcuts
 - Transparent colors
 - Vimselect: Press `alt-esc` to enter vim mode
