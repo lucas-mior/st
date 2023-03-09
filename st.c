@@ -2134,6 +2134,7 @@ externalpipe(const Arg *arg)
 void
 vimselect(const Arg *arg)
 {
+	(void) arg;
 	char buf[UTF_SIZ];
 	int buflen = 0;
 	Glyph *bp, *end;
