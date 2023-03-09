@@ -1,4 +1,6 @@
 /* See LICENSE for license details. */
+#include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <math.h>
 #include <limits.h>
