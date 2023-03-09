@@ -2185,7 +2185,8 @@ vimselect(const Arg *arg)
 		if (newline)
 			(void)xwrite(TMP_FILE, "\n", 1);
 		close(TMP_FILE);
-		openvim(tmp_file, (term.col + 2), (term.row + 1), term.c.x, term.c.y);
+		int firsty = HISTSIZE - term.row + 4;
+		openvim(tmp_file, (term.col + 2), (term.row + 1), term.c.x, firsty);
 	}
 	sleep(MAX(HISTSIZE / 5000, 1));
 	unlink(tmp_file);
