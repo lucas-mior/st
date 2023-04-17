@@ -315,6 +315,28 @@ changealpha(const Arg *arg)
 }
 
 void
+<<<<<<< HEAD
+=======
+openvim(char *tmp_file, int cols, int rows, int x, int y) {
+	char geo[8];
+	char win[12];
+	char cur[40];
+
+	snprintf(geo, sizeof(geo), "%dx%d", cols, rows);
+	snprintf(win, sizeof(win), "%lu", xw.win);
+	snprintf(cur, sizeof(cur), "call cursor(%d, %d)", y, x);
+
+	execl("/usr/local/bin/st", "st", "-w", win, "-g", geo, "-e",
+		  "vim", "-c" "set nonumber norelativenumber wrap",
+				 "-c" "set laststatus=0 buftype=nowrite",
+				 "-c" "normal G", "-c", "sleep 10m",
+				 "-c", cur, tmp_file, NULL);
+	fprintf(stderr, "st: openvim() failed.\n");
+	exit(0);
+}
+
+void
+>>>>>>> 4b7924b (fix openvim cursor position)
 zoom(const Arg *arg)
 {
 	Arg larg;
