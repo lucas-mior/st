@@ -7,7 +7,7 @@ include config.mk
 SRC = st.c x.c boxdraw.c
 OBJ = $(SRC:.c=.o)
 
-all: options tags st
+all: options st
 
 options:
 	@echo st build options:
@@ -16,10 +16,6 @@ options:
 	@echo "CC      = $(CC)"
 
 SRCS = arg.h boxdraw.c boxdraw_data.h config.h st.c st.h win.h x.c
-CTAGS = ctags
-
-tags: $(SRCS)
-	${CTAGS} $(SRCS)
 
 .c.o:
 	$(CC) $(STCFLAGS) -c $<
