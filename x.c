@@ -318,13 +318,13 @@ void
 <<<<<<< HEAD
 =======
 openvim(char *tmp_file, int cols, int rows, int x, int y) {
-	char geo[8];
-	char win[12];
-	char cur[40];
+	char geo[16];
+	char win[16];
+	char cur[64];
 
-	snprintf(geo, sizeof(geo), "%dx%d", cols, rows);
-	snprintf(win, sizeof(win), "%lu", xw.win);
-	snprintf(cur, sizeof(cur), "call cursor(%d, %d)", y, x);
+	snprintf(geo, sizeof (geo), "%dx%d", cols, rows);
+	snprintf(win, sizeof (win), "%lu", xw.win);
+	snprintf(cur, sizeof (cur), "call cursor(%d, %d)", y, x);
 
 	execl("/usr/local/bin/st", "st", "-w", win, "-g", geo, "-e",
 		  "vim", "-c" "set nonumber norelativenumber wrap",
