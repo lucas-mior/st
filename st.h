@@ -75,7 +75,7 @@ typedef Glyph *Line;
 typedef union {
 	int i;
 	uint ui;
-	float f;
+	double f;
 	const void *v;
 	const char *s;
 } Arg;
@@ -141,4 +141,4 @@ extern unsigned int defaultfg;
 extern unsigned int defaultbg;
 extern unsigned int defaultcs;
 extern const int boxdraw, boxdraw_bold, boxdraw_braille;
-extern float alpha;
+extern double alpha;
