@@ -245,24 +245,21 @@ static MouseShortcut mshortcuts[] = {
 };
 
 /* Internal keyboard shortcuts. */
-#define MODKEY Mod1Mask
-#define TERMMOD (ControlMask|ShiftMask)
-
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
 	{ XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ ControlMask,          XK_equal,       zoom,           {.f = +1} },
-	{ ControlMask,          XK_minus,       zoom,           {.f = -1} },
-	{ ControlMask,          XK_0,           zoomreset,      {.f =  0} },
-	{ Mod1Mask,             XK_c,           clipcopy,       {.i =  0} },
-	{ Mod1Mask,             XK_v,           clippaste,      {.i =  0} },
+	{ ControlMask|ShiftMask,XK_plus,        zoom,           {.f = +1} },
+	{ ControlMask|ShiftMask,XK_underscore,  zoom,           {.f = -1} },
+	{ ControlMask|ShiftMask,XK_parenright,  zoomreset,      {.f =  0} },
+	{ ControlMask|ShiftMask,XK_c,           clipcopy,       {.i =  0} },
+	{ ControlMask|ShiftMask,XK_V,           clippaste,      {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
-	{ ControlMask,          XK_F11,         changealpha,    {.f = -0.05} },
-	{ ControlMask,          XK_F12,         changealpha,    {.f = +0.05} },
 	{ Mod1Mask,             XK_Num_Lock,    numlock,        {.i =  0} },
+	{ ControlMask|ShiftMask,XK_N,           changealpha,    {.f = -0.05} },
+	{ ControlMask|ShiftMask,XK_M,           changealpha,    {.f = +0.05} },
 };
 
 /*
