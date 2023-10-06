@@ -263,9 +263,6 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_F11,         changealpha,    {.f = -0.05} },
 	{ ControlMask,          XK_F12,         changealpha,    {.f = +0.05} },
 	{ Mod1Mask,             XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ControlMask,          XK_semicolon,   ttysend,        {.s = "\033[20~"} }, // send <F9> to vim
-	{ TERMMOD,              XK_K,           ttysend,        {.s = "\033[18~"} }, // send <F7> to vim
-	{ TERMMOD,              XK_L,           ttysend,        {.s = "\033[19~"} }, // send <F8> to vim
 };
 
 /*
