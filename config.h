@@ -112,7 +112,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 4;
 
 /* bg opacity */
-double alpha = 0.85;
+double alpha = 0.9;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
@@ -262,8 +262,8 @@ static Shortcut shortcuts[] = {
 	{ ControlMask|ShiftMask,  XK_B,           kscrolldown,    {.i = -1} },
 	{ ControlMask|ShiftMask,  XK_L,           kscrollup,      {.i = +1} },
 	{ ControlMask|ShiftMask,  XK_K,           kscrolldown,    {.i = +1} },
-	{ ControlMask|ShiftMask,  XK_N,           changealpha,    {.f = -0.05} },
-	{ ControlMask|ShiftMask,  XK_M,           changealpha,    {.f = +0.05} },
+	{ ControlMask|ShiftMask,  XK_N,           changealpha,    {.f = -0.02} },
+	{ ControlMask|ShiftMask,  XK_M,           changealpha,    {.f = +0.02} },
 	{ ControlMask|ShiftMask,  XK_Y,           externalpipe,   {.v = openurlcmd } },
 	{ ControlMask|ShiftMask,  XK_O,           externalpipe,   {.v = copyoutput } },
 	{ ControlMask|ShiftMask,  XK_X,           vimselect,      {0} },
