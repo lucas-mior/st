@@ -2145,8 +2145,8 @@ vimselect(const Arg *arg)
 	int TMP_FILE;
 	pid_t child;
 
-	pid_t pid = getpid();
-	snprintf(tmp_file, sizeof(tmp_file), "/tmp/st_vimselect_%d", pid);
+	pid_t stpid = getpid();
+	snprintf(tmp_file, sizeof(tmp_file), "/tmp/st_vimselect_%d", stpid);
 
 	switch (child = fork()) {
 	case -1:
