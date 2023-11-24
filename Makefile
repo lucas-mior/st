@@ -47,11 +47,14 @@ install: st
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/st_copyout.sh
 	cp -f st_urlhandler.sh $(DESTDIR)$(PREFIX)/bin
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/st_urlhandler.sh
+	mkdir -p $(DESTDIR)$(ICONPREFIX)
+	[ -f $(ICONNAME) ] && cp -f $(ICONNAME) $(DESTDIR)$(ICONPREFIX) || :
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/st
 	rm -f $(DESTDIR)$(MANPREFIX)/man1/st.1
 	rm -f $(DESTDIR)$(PREFIX)/bin/st_copyout.sh
 	rm -f $(DESTDIR)$(PREFIX)/bin/st_urlhandler.sh
+	rm -f $(DESTDIR)$(ICONPREFIX)/$(ICONNAME)
 
 .PHONY: all clean dist install uninstall
