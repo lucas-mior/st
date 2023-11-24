@@ -12,7 +12,7 @@ static char *font2[] = {
     "LiterationMono Nerd Font Mono:pixelsize=18:style=Regular",
 };
 
-static int borderpx = 1;
+static int borderpx = 0;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -118,22 +118,22 @@ double alpha = 0.9;
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"#000000",
-	"#ff0000",
-	"#00ff00",
-	"#ffff00",
-	"#0088ff",
-	"#ff00ff",
+	"#f50000",
+	"#00f500",
+	"#f5f500",
+	"#0088f5",
+	"#f500f5",
 	"#00aaaa",
 	"#ffffff",
 
 	/* 8 bright colors */
 	"#333333",
-	"#ff6600",
+	"#ff4400",
 	"#00cc00",
-	"#ffbb00",
-	"#0066ff",
-	"#c600c6",
-	"#0066aa",
+	"#f9bb00",
+	"#0077f9",
+	"#dd00dd",
+	"#0077bb",
 	"#f1f1f1",
 
 	/* 26 transparent colors */
