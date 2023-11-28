@@ -4,27 +4,18 @@
 
 include config.mk
 
+all: st
+
 SRC = st.c x.c boxdraw.c
 OBJ = $(SRC:.c=.o)
 
-all: st
-
 SRCS = arg.h boxdraw.c boxdraw_data.h config.h st.c st.h win.h x.c
 
-.c.o:
-	$(CC) $(STCFLAGS) -c $<
-
-st.o: config.h st.h win.h
-x.o: arg.h config.h st.h win.h
-boxdraw.o: config.h st.h boxdraw_data.h
-
-$(OBJ): config.h config.mk
-
-st: $(OBJ)
-	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
+st: $(SRCS) Makefile
+	$(CC) $(STCFLAGS) $(SRC) -o st $(STLDFLAGS)
 
 clean:
-	rm -f st $(OBJ) st-$(VERSION).tar.gz
+	rm -f st st-$(VERSION).tar.gz
 
 dist: clean
 	mkdir -p st-$(VERSION)
