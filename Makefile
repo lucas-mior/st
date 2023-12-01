@@ -10,7 +10,7 @@ SRC = st.c x.c boxdraw.c
 SRCS = arg.h boxdraw.c boxdraw_data.h config.h st.c st.h win.h x.c
 
 st: $(SRCS) Makefile
-	$(CC) $(STCFLAGS) $(SRC) -o st $(STLDFLAGS)
+	$(CC) $(STCFLAGS) -flto $(SRC) -o st $(STLDFLAGS)
 
 clean:
 	rm -f st st-$(VERSION).tar.gz
