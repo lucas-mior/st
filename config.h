@@ -5,11 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=18:antialias=true:autohint=true";
+static char *font = "Liberation Mono:pixelsize=16:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"Noto Color Emoji:pixelsize=18:antialias=true:autohint=true",
-    "LiterationMono Nerd Font Mono:pixelsize=18:style=Regular",
+	"Noto Color Emoji:pixelsize=16:antialias=true:autohint=true",
+    "LiterationMono Nerd Font Mono:pixelsize=16:style=Regular",
 };
 
 static int borderpx = 1;
@@ -147,13 +147,13 @@ static const char *colorname[] = {
 	"#3a3a3a",
 
 	"#000000",
-	"#2a0000",
-	"#002a00",
-	"#2a2a00",
-	"#00002a",
-	"#2a002a",
-	"#002a2a",
-	"#2a2a2a",
+	"#250000",
+	"#002500",
+	"#252500",
+	"#000025",
+	"#250025",
+	"#002525",
+	"#252525",
 
 	"#881000",
 	"#882000",
