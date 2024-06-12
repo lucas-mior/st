@@ -12,7 +12,7 @@ OBJ = $(SRC:.c=.o)
 SRCS = arg.h boxdraw.c boxdraw_data.h config.h st.c st.h win.h x.c
 
 st: $(SRCS) Makefile
-	$(CC) $(STCFLAGS) -flto $(SRC) -o st $(STLDFLAGS)
+	$(CC) $(STCFLAGS) -g -flto $(SRC) -o st $(STLDFLAGS)
 
 clean:
 	rm -f st st-$(VERSION).tar.gz
