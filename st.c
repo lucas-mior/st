@@ -2291,9 +2291,11 @@ externalpipe(const Arg *arg)
         if (lastpos == 0)
             continue;
 		end = &bp[lastpos + 1];
-		for (; bp < end; ++bp)
-			if (xwrite(to[1], buf, utf8encode(bp->u, buf)) < 0)
+		for (; bp < end; ++bp) {
+			int len = utf8encode(bp->u, buf);
+			if (xwrite(to[1], buf, len) < 0)
 				break;
+		}
 		if ((newline = TLINE_HIST(n)[lastpos].mode & ATTR_WRAP))
 			continue;
 		if (xwrite(to[1], "\n", 1) < 0)
