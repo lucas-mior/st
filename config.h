@@ -260,6 +260,10 @@ static Shortcut shortcuts[] = {
 	{ Mod1Mask,             XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ControlMask|ShiftMask,XK_N,           changealpha,    {.f = -0.05} },
 	{ ControlMask|ShiftMask,XK_M,           changealpha,    {.f = +0.05} },
+	{ ControlMask|ShiftMask,XK_L,           kscrollup,      {.i = +1} },
+	{ ControlMask|ShiftMask,XK_U,           kscrollup,      {.i = -1} },
+	{ ControlMask|ShiftMask,XK_K,           kscrolldown,    {.i = +1} },
+	{ ControlMask|ShiftMask,XK_D,           kscrolldown,    {.i = -1} },
 };
 
 /*
