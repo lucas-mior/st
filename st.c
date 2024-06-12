@@ -35,7 +35,7 @@
 #define ESC_ARG_SIZ   16
 #define STR_BUF_SIZ   ESC_BUF_SIZ
 #define STR_ARG_SIZ   ESC_ARG_SIZ
-#define HISTSIZE      2000
+#define HISTSIZE      500
 #define RESIZEBUFFER  1000
 
 /* macros */
@@ -63,7 +63,7 @@
 	} \
 } while (0);
 
-#define TLINE_HIST(y)           ((y) <= HISTSIZE-term.row+2 ? term.hist[(y)] : term.line[(y-HISTSIZE+term.row-3)])
+#define TLINE_HIST(y)           ((y) < HISTSIZE-term.row ? term.hist[(y)] : term.line[(y-HISTSIZE+term.row)])
 
 enum term_mode {
 	MODE_WRAP        = 1 << 0,
@@ -2335,8 +2335,9 @@ vimselect(const Arg *arg)
 		}
 
 		newline = 0;
-		for (n = 0; n <= HISTSIZE + 2; n++) {
-			int has_content = 0;
+		for (n = 1; n < HISTSIZE; n++) {
+			if (n > term.histf && n < (HISTSIZE - term.row))
+				continue;
 			bp = TLINE_HIST(n);
 			lastpos = MIN(tlinehistlen(n) + 1, term.col) - 1;
 			if (lastpos < 0)
@@ -2344,17 +2345,15 @@ vimselect(const Arg *arg)
 			end = &bp[lastpos + 1];
 			for (; bp < end; ++bp) {
 				size_t len = utf8encode(bp->u, buf);
-				if (buf[0] != '\0') {
-					has_content = 1;
-					if (xwrite(TMP_FILE, buf, len) < 0)
-						break;
-				}
+				if (buf[0] == '\0')
+					continue;
+				if (xwrite(TMP_FILE, buf, len) < 0)
+					break;
 			}
 			if ((newline = TLINE_HIST(n)[lastpos].mode & ATTR_WRAP))
 				continue;
-			if (has_content)
-				if (xwrite(TMP_FILE, "\n", 1) < 0)
-					break;
+			if (xwrite(TMP_FILE, "\n", 1) < 0)
+				break;
 			newline = 0;
 		}
 		if (newline)
