@@ -2362,9 +2362,10 @@ vimselect(const Arg *arg)
 		close(TMP_FILE);
 		int y = HISTSIZE - term.row + term.c.y + 4;
 		openvim(tmp_file, (term.col + 2), (term.row + 1), term.c.x, y);
+	default:
+		vimselectfixes();
+		break;
 	}
-	sleep(MAX(HISTSIZE / 5000, 1));
-	/* unlink(tmp_file); */
 
 	return;
 }

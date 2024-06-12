@@ -315,14 +315,20 @@ changealpha(const Arg *arg)
 }
 
 void
+vimselectfixes(void) {
+#define HISTSIZE 2000
+	XWarpPointer(xw.dpy, None, xw.win, 0, 0, 0, 0, 50, 50);
+	XSetInputFocus(xw.dpy, xw.win, RevertToPointerRoot, CurrentTime);
+	XFlush(xw.dpy);
+	sleep(MAX(HISTSIZE / 5000, 1));
+	/* unlink(tmp_file); */
+}
+
+void
 openvim(char *tmp_file, int cols, int rows, int x, int y) {
 	char geo[8];
 	char win[12];
 	char cur[40];
-
-	XWarpPointer(xw.dpy, None, xw.win, 0, 0, 0, 0, 50, 50);
-	XSetInputFocus(xw.dpy, xw.win, RevertToPointerRoot, CurrentTime);
-	XFlush(xw.dpy);
 
 	snprintf(geo, sizeof(geo), "%dx%d", cols, rows);
 	snprintf(win, sizeof(win), "%lu", xw.win);
