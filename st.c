@@ -2268,6 +2268,7 @@ vimselect(const Arg *arg)
 
 	char tmp_file[50];
 	int TMP_FILE;
+	int m;
 	pid_t child;
 
 	pid_t pid = getpid();
@@ -2284,11 +2285,9 @@ vimselect(const Arg *arg)
 		}
 
 		newline = 0;
-		for (n = 1; n < HISTSIZE; n++) {
-			if (n > term.histf && n < (HISTSIZE - term.row))
-				continue;
-			bp = TLINE_HIST(n);
-			lastpos = MIN(tlinehistlen(n) + 1, term.col) - 1;
+		for (n = 0; n < term.row; n++) {
+			bp = term.line[n];
+			lastpos = MIN(tlinelen(bp) + 1, term.col) - 1;
 			if (lastpos < 0)
 				break;
 			end = &bp[lastpos + 1];
@@ -2299,7 +2298,7 @@ vimselect(const Arg *arg)
 				if (xwrite(TMP_FILE, buf, len) < 0)
 					break;
 			}
-			if ((newline = TLINE_HIST(n)[lastpos].mode & ATTR_WRAP))
+			if ((newline = bp[lastpos].mode & ATTR_WRAP))
 				continue;
 			if (xwrite(TMP_FILE, "\n", 1) < 0)
 				break;
@@ -2308,7 +2307,7 @@ vimselect(const Arg *arg)
 		if (newline)
 			(void)xwrite(TMP_FILE, "\n", 1);
 		close(TMP_FILE);
-		int y = HISTSIZE - term.row + term.c.y + 4;
+		int y = term.c.y;
 		openvim(tmp_file, (term.col + 2), (term.row + 1), term.c.x, y);
 	default:
 		vimselectfixes();
